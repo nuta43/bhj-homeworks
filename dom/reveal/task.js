@@ -10,7 +10,10 @@ for (let i=0;i<array.length;i++) {
     if (top<350)  {
 array[i].classList.add("reveal_active");
     }    
-    if (top<0) {
+    if (bottom<0) {
+        array[i].classList.remove("reveal_active")
+    }
+    if (bottom>1000) {
         array[i].classList.remove("reveal_active")
     }
 }
