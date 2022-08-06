@@ -3,23 +3,19 @@ let prevElement=document.querySelector(".slider__arrow_prev")
 console.log(nextElement)
 console.log(prevElement)
 
-let slider=document.querySelectorAll(".slider__item")
-let array=Array.from(slider)
-console.log(array)
-
+let slider=document.querySelectorAll(".slider__item");
+let array=Array.from(slider);
 function change() {
 for (let i=0;i<array.length;i++) {
-    if (array[i].classList.contains('slider__item_active')) {
-        array[i].classList.remove('slider__item_active');
-
-if(i === array.length - 1) {
+   if (array[i].classList.contains('slider__item_active')) {
+    array[i].classList.remove('slider__item_active');
+    if(i === array.length - 1) {
     i = 0;
 } else {
     i += 1;
 }
-
 array[i].classList.add('slider__item_active');
-return;
+   return;
 }
 }
 }
@@ -39,8 +35,8 @@ function changePrev () {
 }
     }
 }
-prevElement.addEventListener ("click",changePrev)
-nextElement.addEventListener("click",change)
+prevElement.addEventListener ("click",changePrev);
+nextElement.addEventListener("click",change);
 
 
 
