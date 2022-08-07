@@ -1,5 +1,6 @@
 let number=document.querySelectorAll(".product__quantity-control_inc")
 let minus=document.querySelectorAll(".product__quantity-control_dec")
+const cart = document.querySelector('.cart__products');
 number.forEach(el => {el.addEventListener("click",function(){
     let prev = el.previousElementSibling
    prev.textContent++
@@ -15,16 +16,35 @@ minus.forEach(el => {el.addEventListener("click",function(){
 })
 
 let add=document.querySelectorAll(".product__add")
-add.forEach(el=>{el.addEventListener("click",function(){
-console.log(el.closest(".product__image"))
-let img=document.querySelectorAll(".product__image")
-img.forEach(item=>{
-console.log(el.closest(item))
+add.forEach(el=>{el.addEventListener("click",function(event) {
+
+        const product = event.target.closest('.product');
+        const id = product.dataset.id;
+        const countFromProduct = +event.target.parentNode.querySelector('.product__quantity-value').innerText;
+    
+        for (let item of cart.children) {
+    
+            if (item.dataset.id === id) {
+                let productCount = item.querySelector('.cart__product-count');
+                let total = +productCount.innerText;
+                productCount.innerText = total + countFromProduct;
+    
+                return false;
+            }
+        }
+    
+        const productImg = product.querySelector('.product__image').src;
+        const count = product.querySelector('.product__quantity-value').innerText;
+    
+        const productToCart = `<div class="cart__product" data-id="${id}">
+                                    <img class="cart__product-image" src="${productImg}">
+                                    <div class="cart__product-count">${count}</div>
+                                </div>`;
+    
+        cart.insertAdjacentHTML('beforeend', productToCart);
+    })
 })
-    let cart=document.querySelector(".cart__products")
-    cart.innerHTML+=`<div class="cart__product" data-id="1">
-    <img class="cart__product-image" src="${img.src}">
-    <div class="cart__product-count">20</div>
-</div>`
-})
-})
+
+;
+
+
