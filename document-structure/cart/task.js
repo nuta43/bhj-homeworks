@@ -40,8 +40,10 @@ add.forEach(el=>{el.addEventListener("click",function(event) {
                                     <img class="cart__product-image" src="${productImg}">
                                     <div class="cart__product-count">${count}</div>
                                 </div>`;
-    
+
+        if (count>=1) {
         cart.insertAdjacentHTML('beforeend', productToCart);
+        }
     })
 })
 
