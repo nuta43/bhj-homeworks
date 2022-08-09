@@ -4,7 +4,6 @@ let second=document.querySelectorAll(".interests_active");
 for (let i=0;i<second.length;i++) {
     let check=second[i].closest("li.interest");
     let checkbox=check.firstElementChild.firstElementChild;
-checkbox.addEventListener("input",change);
 function change() {
     let int=second[i].lastElementChild.lastElementChild.lastElementChild;
     let int2=second[i].firstElementChild.firstElementChild.firstElementChild;
@@ -16,6 +15,9 @@ int.checked=false;
         int2.checked=false;
             }
             else int2.checked=true; 
+
 }
+checkbox.addEventListener("input",change);
 }
+
 
